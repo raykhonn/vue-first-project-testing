@@ -33,7 +33,7 @@ function multiChange(e: Event) {
 
   for (let i = 0; i < input.length; i++) {
     const item = input[i];
-    errorMessage.value = item.size > props.maxSize ? true : false;
+    errorMessage.value = item.size > props.maxSize;
     const type = getFileType(item);
     multiResData.value.push({
       id: new Date().getTime() + i.toString(),
@@ -61,10 +61,6 @@ const multipleUpload = async () => {
           const response = await uploadSingle(multiResData.value[i].file);
           multiResData.value[i].objectName = response.data.objectName;
           multiLoader.value = false;
-
-          if (response.status == 200) {
-            multiResData.value[i].status = Icon[Status.success];
-          }
         } else {
           multiResData.value[i].status = Icon[Status.failed];
         }
