@@ -10,7 +10,7 @@ describe("multipleUpload", () => {
     const wrapper = mount(Multiple, {
       props: {
         maxSize: 10 * 1024 * 1024,
-        maxElementCount: 5,
+        maxElementCount: 10,
         isMultiple: true,
       },
     });
