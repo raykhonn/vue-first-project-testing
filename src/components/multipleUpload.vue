@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { uploadSingle } from "@/service";
-import { Icon, Status, getFileType } from "@/utils";
+import { uploadSingle } from "../service";
+import { Icon, Status, getFileType } from "../utils";
 import { ref } from "vue";
 
 interface MultiResList {
@@ -45,12 +45,10 @@ function multiChange(e: Event) {
       objectName: "",
     });
     if (multiResData.value.length == props.maxElementCount) {
-      maxCount.value = true;
-      return;
+      return (maxCount.value = true);
     }
   }
 }
-
 const multipleUpload = async () => {
   if (!multiResData) return;
   multiLoader.value = true;
@@ -61,12 +59,9 @@ const multipleUpload = async () => {
           const response = await uploadSingle(multiResData.value[i].file);
           multiResData.value[i].objectName = response.data.objectName;
           multiLoader.value = false;
-          if (response.status == 200) {
+          if (response.status == 200)
             multiResData.value[i].status = Icon[Status.success];
-          }
-        } else {
-          multiResData.value[i].status = Icon[Status.failed];
-        }
+        } else multiResData.value[i].status = Icon[Status.failed];
       }
       multiLoader.value = false;
     } catch (error) {
@@ -75,12 +70,9 @@ const multipleUpload = async () => {
     }
   }
 };
-
 const remove = async (id: string) => {
   multiResData.value = multiResData.value.filter((e) => e.id !== id);
-  if (multiResData.value.length < props.maxElementCount) {
-    maxCount.value = false;
-  }
+  if (multiResData.value.length < props.maxElementCount) maxCount.value = false;
 };
 
 defineExpose({

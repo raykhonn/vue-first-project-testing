@@ -42,12 +42,9 @@ const singleUpload = async () => {
           singleLoader.value = true;
           await uploadSingle(singleFile.value.file);
           singleLoader.value = false;
-
           singleFile.value.status = Icon[Status.success];
         }
-      } else {
-        singleFile.value.status = Icon[Status.failed];
-      }
+      } else singleFile.value.status = Icon[Status.failed];
     } catch (error: any) {
       singleFile.value.status = Icon[Status.error];
       singleLoader.value = false;

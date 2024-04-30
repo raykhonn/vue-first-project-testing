@@ -3,4 +3,5 @@ export const Urls: Record<string, string> = {
   zip: "https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/folder_zip.png",
   sql: "https://www.shareicon.net/data/2015/09/07/97430_document_512x512.png",
   html: "https://cdn4.iconfinder.com/data/icons/smashicons-file-types-flat/56/22_-_HTML_File_Flat-512.png",
+  thumb: "https://www.iconpacks.net/icons/2/free-file-icon-1453-thumb.png",
 };
