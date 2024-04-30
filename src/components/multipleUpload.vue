@@ -61,6 +61,9 @@ const multipleUpload = async () => {
           const response = await uploadSingle(multiResData.value[i].file);
           multiResData.value[i].objectName = response.data.objectName;
           multiLoader.value = false;
+          if (response.status == 200) {
+            multiResData.value[i].status = Icon[Status.success];
+          }
         } else {
           multiResData.value[i].status = Icon[Status.failed];
         }
