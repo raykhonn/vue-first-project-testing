@@ -1,3 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`SingleUpload > should display file mime type 1`] = `"<input data-v-820553f9="" class="hidden" type="file">"`;
+
 exports[`singleleUpload > should file mime type 1`] = `"<input data-v-820553f9="" class="hidden" type="file">"`;
+
+exports[`singleleUpload > should handle API response success 1`] = `"<input data-v-820553f9="" class="hidden" type="file">"`;
+
+exports[`singleleUpload > should handle file mime type validation for all types of files 1`] = `"<input data-v-820553f9="" class="hidden" type="file">"`;

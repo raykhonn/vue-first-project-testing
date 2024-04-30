@@ -1,3 +1,4 @@
+
 import { describe, it, expect, vi } from "vitest";
 
 import { mount } from "@vue/test-utils";
@@ -16,6 +17,7 @@ describe.concurrent("singleleUpload", () => {
     const wrapper = mount(Single, {
       props: {
         maxSize: 4,
+        fileType: "text/plain",
       },
     });
     const inputElement = wrapper.find('input[type="file"]')
@@ -40,6 +42,7 @@ describe.concurrent("singleleUpload", () => {
     const wrapper = mount(Single, {
       props: {
         maxSize: 6,
+        fileType: "text/plain",
       },
     });
     const inputElement = wrapper.find('input[type="file"]')
@@ -64,6 +67,7 @@ describe.concurrent("singleleUpload", () => {
     const wrapper = mount(Single, {
       props: {
         maxSize: 10,
+        fileType: "test/plain",
       },
     });
 
@@ -88,12 +92,13 @@ describe.concurrent("singleleUpload", () => {
     const wrapper = mount(Single, {
       props: {
         maxSize: 10,
+        fileType: "application/zip",
       },
     });
     const inputElement = wrapper.find('input[type="file"]')
       .element as HTMLInputElement;
     const file = new File(["27432"], "foo.pdf", {
-      type: "application/pdf",
+      type: "application/zip",
     });
     const mockFileList = Object.create(inputElement.files);
     mockFileList[0] = file;

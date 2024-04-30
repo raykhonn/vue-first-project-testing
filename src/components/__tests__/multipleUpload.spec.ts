@@ -128,8 +128,6 @@ describe("multipleUpload", () => {
     await wrapper.vm.$nextTick();
 
     const element = wrapper.find("label");
-
-    // expect(element.attributes('class')).toEqual(undefined);
   });
 
   it("should input type isMultiple", () => {

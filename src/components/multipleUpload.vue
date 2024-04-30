@@ -28,9 +28,7 @@ const props = defineProps<Props>();
 
 function multiChange(e: Event) {
   const input = (e.target as HTMLInputElement).files;
-
   if (!input) return;
-
   for (let i = 0; i < input.length; i++) {
     const item = input[i];
     errorMessage.value = item.size > props.maxSize;
@@ -44,11 +42,11 @@ function multiChange(e: Event) {
       status: "",
       objectName: "",
     });
-    if (multiResData.value.length == props.maxElementCount) {
+    if (multiResData.value.length == props.maxElementCount)
       return (maxCount.value = true);
-    }
   }
 }
+
 const multipleUpload = async () => {
   if (!multiResData) return;
   multiLoader.value = true;
@@ -59,8 +57,7 @@ const multipleUpload = async () => {
           const response = await uploadSingle(multiResData.value[i].file);
           multiResData.value[i].objectName = response.data.objectName;
           multiLoader.value = false;
-          if (response.status == 200)
-            multiResData.value[i].status = Icon[Status.success];
+          multiResData.value[i].status = Icon[Status.success];
         } else multiResData.value[i].status = Icon[Status.failed];
       }
       multiLoader.value = false;
@@ -70,6 +67,7 @@ const multipleUpload = async () => {
     }
   }
 };
+
 const remove = async (id: string) => {
   multiResData.value = multiResData.value.filter((e) => e.id !== id);
   if (multiResData.value.length < props.maxElementCount) maxCount.value = false;
@@ -122,7 +120,7 @@ defineExpose({
       @click="multipleUpload"
       class="btn btn-blue w-[200px]"
     >
-      {{ multiLoader ? "Saving..." : "Save" }}
+      {{ multiLoader ? "Saving..." : "Saved" }}
     </button>
   </div>
 </template>

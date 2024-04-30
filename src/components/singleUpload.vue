@@ -13,6 +13,7 @@ interface Single {
 }
 interface Props {
   maxSize: number;
+  fileType: string;
 }
 const props = defineProps<Props>();
 
@@ -22,7 +23,7 @@ const singleStatus = ref(0);
 
 function singleChange(e: any) {
   const input = (e.target as HTMLInputElement).files;
-  if (!input) return;
+  if (!input || input[0].type !==props.fileType) return;
 
   singleFile.value = {
     file: input[0],
@@ -30,7 +31,7 @@ function singleChange(e: any) {
     img: getFileType(input[0]),
     name: input[0].name,
     status: "",
-    errorMessage: input[0].size > props.maxSize ? true : false,
+    errorMessage: input[0].size > props.maxSize,
   };
 }
 
